@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "User Registration Form";
+}
+
+
+<h1>Registration Form</h1>
+
+@model Coffee_Shop.Models.RegisterUser
+
+    @using (var form = Html.BeginForm())
+    {
+        <div>
+            <div>
+                @* razor using linq syntax to call  first name etc. *@
+                @Html.LabelFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName)
+            </div>
+            <div>
+                @* razor using linq syntax to call email etc. *@
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email)
+            </div>
+            <div>
+                @* razor using linq syntax to call password etc. *@
+                @Html.LabelFor(m => m.Password)
+                @Html.TextBoxFor(m => m.Password)
+            </div>
+
+        </div>
+        @* the submit button will automatically go back to the page *@
+        <input type="submit" value="Register"/>
+        @*<button onclick="window.location.href=https://localhost:5001/CoffeeShop/index"></button>*@
+    }
+    
