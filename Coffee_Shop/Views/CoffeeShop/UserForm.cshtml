@@ -2,33 +2,41 @@
     ViewData["Title"] = "User Registration Form";
 }
 
-
 <h1>Registration Form</h1>
 
 @model Coffee_Shop.Models.RegisterUser
 
-    @using (var form = Html.BeginForm())
+@*@Html.ValidationSummary()*@
+ @using (var form = Html.BeginForm())
     {
-        <div>
-            <div>
-                @* razor using linq syntax to call  first name etc. *@
-                @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
-            </div>
-            <div>
-                @* razor using linq syntax to call email etc. *@
-                @Html.LabelFor(m => m.Email)
-                @Html.TextBoxFor(m => m.Email)
-            </div>
-            <div>
-                @* razor using linq syntax to call password etc. *@
-                @Html.LabelFor(m => m.Password)
-                @Html.TextBoxFor(m => m.Password)
-            </div>
-
-        </div>
+<div>
+    <div class="col-12">
+        <input type="text" name="UserName" value="@Model.UserName" placeholder="UserName" class="col-5" /> 
+        @Html.ValidationMessageFor(m => m.UserName) 
+    </div>
+    <div class="col-12">
+        <input type="text" name="Email" value="@Model.Email" placeholder="Email" class="col-5" />
+        @Html.ValidationMessageFor(m => m.Email) <br/>
+    </div>
+    <div class="col-12">
+        <input type="password" name="Password" value="@Model.Password" placeholder="Password" class="col-5" />
+        @Html.ValidationMessageFor(m => m.Password) <br/>
+    </div>
+    <div class="col-12">
+        <input type="text" name="FirstName" value="@Model.FirstName" placeholder="First Name" class="col-5" />
+        @Html.ValidationMessageFor(m => m.FirstName) <br/>
+    </div>
+    <div class="col-12">
+        <input type="text" name="LastName" value="@Model.LastName" placeholder="Last Name" class="col-5" />
+        @Html.ValidationMessageFor(m => m.LastName) <br/>
+    </div>
+    <div class="col-12">
+        <input type="number" name="Age" value="@Model.Age" placeholder="Age" class="col-5" />
+        @Html.ValidationMessageFor(m => m.Age) <br/>
+    </div>
+</div>
         @* the submit button will automatically go back to the page *@
         <input type="submit" value="Register"/>
-        @*<button onclick="window.location.href=https://localhost:5001/CoffeeShop/index"></button>*@
     }
+    
     

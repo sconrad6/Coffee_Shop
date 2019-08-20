@@ -1,3 +1,13 @@
-﻿@model Coffee_Shop.Models.RegisterUser
+﻿@{
+    ViewData["Title"] = "User Information";
+}
 
-<p>Welcome @Model.UserName </p>
+@model Coffee_Shop.Models.RegisterUser
+
+<p>Welcome, @Model.UserName</p>
+
+<div class="text-left">
+    <h1 class="display-4"></h1>
+    <p><a href="https://localhost:5001/coffeeshop/userview">User Information</a></p>
+
+</div>

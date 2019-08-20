@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "User Information";
+}
+
+@model Coffee_Shop.Models.RegisterUser
+
+@*@ViewBag.userName;
+    @ViewBag.userEmail;
+    @ViewBag.userPassword;
+    @ViewBag.userFirstName;
+    @ViewBag.userLastName;
+    @ViewBag.userAge;*@
+
+@using (var form = Html.BeginForm())
+{
+    <div>
+        <div>
+            @Html.LabelFor(m => m.UserName): @Html.DisplayFor(m=>m.UserName)
+
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Password):  @Model.Password
+
+
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Email):   @Model.Email
+
+        </div>
+        <div>
+            @Html.LabelFor(m => m.FirstName):  @Model.FirstName
+
+        </div>
+        <div>
+            @Html.LabelFor(m => m.LastName):  @Model.LastName
+
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Age):  @Model.Age
+
+        </div>
+    </div>
+}
+
+

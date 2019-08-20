@@ -21,4 +21,7 @@
   <ItemGroup>
     <Folder Include="Views\CoffeeShop\" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Models\AgeEnum.cs" />
+  </ItemGroup>
 </Project>
