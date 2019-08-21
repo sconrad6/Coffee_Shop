@@ -26,24 +26,16 @@ namespace Coffee_Shop.Controllers
         [HttpPost] 
         public IActionResult UserForm(RegisterUser user)
         {
-            if (ModelState.IsValid && TempData["UserData"] is null)
+            if (ModelState.IsValid)
             {
-                 TempData["UserData"] = user;
                  return RedirectToAction("Index", user);
             }
            return View("UserForm", user);  
         }
 
-        public IActionResult UserView()
+        public IActionResult UserView(RegisterUser user)
         {
-            RegisterUser user = (RegisterUser)TempData["UserData"];
-            //ViewBag.userName = user.UserName;
-            //ViewBag.userPassword = user.Password;
-            //ViewBag.userEmail = user.Email;
-            //ViewBag.userFirstName = user.FirstName;
-            //ViewBag.userLastName = user.LastName;
-            //ViewBag.userAge = user.Age;
-            return View("UserView", user);
+            return View(user);
         }
     }
 }

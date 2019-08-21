@@ -4,42 +4,28 @@
 
 @model Coffee_Shop.Models.RegisterUser
 
-@*@ViewBag.userName;
-    @ViewBag.userEmail;
-    @ViewBag.userPassword;
-    @ViewBag.userFirstName;
-    @ViewBag.userLastName;
-    @ViewBag.userAge;*@
+<h1>Your Information</h1>
+@{
 
-@using (var form = Html.BeginForm())
-{
-    <div>
-        <div>
-            @Html.LabelFor(m => m.UserName): @Html.DisplayFor(m=>m.UserName)
+<table class="table">
+    <tr>
+        <th>UserName</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+    </tr>
+    <tr>
+        <td>@Model.UserName</td>
+        <td>@Model.Email</td>
+        <td>@Model.Password</td>
+        <td>@Model.FirstName</td>
+        <td>@Model.LastName</td>
+        <td>@Model.Age</td>
+    </tr>
 
-        </div>
-        <div>
-            @Html.LabelFor(m => m.Password):  @Model.Password
+</table>
 
-
-        </div>
-        <div>
-            @Html.LabelFor(m => m.Email):   @Model.Email
-
-        </div>
-        <div>
-            @Html.LabelFor(m => m.FirstName):  @Model.FirstName
-
-        </div>
-        <div>
-            @Html.LabelFor(m => m.LastName):  @Model.LastName
-
-        </div>
-        <div>
-            @Html.LabelFor(m => m.Age):  @Model.Age
-
-        </div>
-    </div>
 }
-
 

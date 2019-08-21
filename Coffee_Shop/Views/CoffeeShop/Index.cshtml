@@ -6,8 +6,4 @@
 
 <p>Welcome, @Model.UserName</p>
 
-<div class="text-left">
-    <h1 class="display-4"></h1>
-    <p><a href="https://localhost:5001/coffeeshop/userview">User Information</a></p>
-
-</div>
+@Html.ActionLink("User Information", "UserView", Model)
