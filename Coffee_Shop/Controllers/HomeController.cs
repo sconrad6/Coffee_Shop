@@ -12,32 +12,9 @@ namespace Coffee_Shop.Controllers
 {
     public class HomeController : Controller
     {
-        List<RegisterUser> users = new List<RegisterUser>();
-
         public IActionResult ListUsers()
         {
-            return View(users);
-        }
-
-        public IActionResult AddUser(RegisterUser user)
-        {
-            string userJson = HttpContext.Session.GetString("UserSession");
-            if (userJson != null)
-            {
-                users = JsonConvert.DeserializeObject<List<RegisterUser>>(userJson);
-            }
-            users.Add(user);
-            return View("ListUsers", user);
-        }
-
-        public IActionResult RegisterUserList()
-        {
-            string userJson = HttpContext.Session.GetString("UserSession");
-            if (userJson != null)
-            {
-                users = JsonConvert.DeserializeObject<List<RegisterUser>>(userJson);
-            }
-            return View("ListUsers", users);
+            return View();
         }
 
         public IActionResult Index()
@@ -45,15 +22,29 @@ namespace Coffee_Shop.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        //public IActionResult RegisterUserList()
+        //{
+        //    string userJson = HttpContext.Session.GetString("UserSession");
+        //    if (userJson != null)
+        //    {
+        //        users = JsonConvert.DeserializeObject<List<RegisterUser>>(userJson);
+        //    }
+        //    return View("ListUsers", users);
+        //}
+
+        [HttpPost]
+        // this will save the user's information in a cookie
+        public IActionResult SaveUser(RegisterUser user)
         {
-            return View();
+            CookieOptions option = new CookieOptions();
+            Response.Cookies.Append("UserName", user.UserName, option);
+            Response.Cookies.Append("FirstName", user.FirstName, option);
+            Response.Cookies.Append("LastName", user.LastName, option);
+            Response.Cookies.Append("Email", user.Email, option);
+            Response.Cookies.Append("Age", user.Age.ToString(), option);
+
+            return RedirectToAction("SaveUser", user);
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }

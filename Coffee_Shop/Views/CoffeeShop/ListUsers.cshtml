@@ -18,15 +18,14 @@
     </tr>
     @foreach (var user in Model)
     {
-    <tr>
-        <td>@user.UserName</td>
-        <td>@user.Email</td>
-        <td>@user.FirstName</td>
-        <td>@user.LastName</td>
-        <td>@user.Age</td>
-        <td>@Html.ActionLink("Add to list", "AddUser", "Home", user)</td>
-    </tr>
+        <tr>
+            <td>@user.UserName</td>
+            <td>@user.Email</td>
+            <td>@user.FirstName</td>
+            <td>@user.LastName</td>
+            <td>@user.Age</td>
+            <td>@Html.ActionLink("Add to list", "AddUser", user)</td>
+        </tr>
     }
 
 </table>
-    

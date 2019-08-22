@@ -5,11 +5,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Coffee_Shop.Models;
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.Http;
 
 namespace Coffee_Shop.Controllers
 {
     public class CoffeeShopController : Controller 
     {
+        List<RegisterUser> users = new List<RegisterUser>();
+
         public IActionResult Index(RegisterUser user)
         {
             return View(user);
@@ -28,7 +32,15 @@ namespace Coffee_Shop.Controllers
         {
             if (ModelState.IsValid)
             {
-                 return RedirectToAction("Index", user);
+                string userJson = HttpContext.Session.GetString("UserSession");
+                if (userJson != null)
+                {
+                    users = JsonConvert.DeserializeObject<List<RegisterUser>>(userJson);
+                }
+                users.Add(user);
+                HttpContext.Session.SetString("UserSession", JsonConvert.SerializeObject(users));
+                //return View("ListUsers", users);
+                return RedirectToAction("ListUsers", user);
             }
            return View("UserForm", user);  
         }
@@ -36,6 +48,16 @@ namespace Coffee_Shop.Controllers
         public IActionResult UserView(RegisterUser user)
         {
             return View(user);
+        }
+
+        public IActionResult ListUsers()
+        {
+            string userJson = HttpContext.Session.GetString("UserSession");
+            if (userJson != null)
+            {
+                users = JsonConvert.DeserializeObject<List<RegisterUser>>(userJson);
+            }
+            return View(users);
         }
     }
 }
