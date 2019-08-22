@@ -17,11 +17,13 @@
   <ItemGroup>
     <Content Remove="Controllers\RegistrationController.cshtml" />
     <Content Remove="Views\User\Register.cshtml" />
+    <Content Remove="Views\Home\RegisterUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\CoffeeShop\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Models\AgeEnum.cs" />
+    <Compile Remove="Controllers\CoffeeShopController.cs" />
   </ItemGroup>
 </Project>
