@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["title"] = "Login";
+}
+
+<h1>Login</h1>
+
+@using Microsoft.AspNetCore.Http
+@model Coffee_Shop.Models.RegisterUser
+
+@if (Context.Session.GetString("LoggedIn") == null)
+{
+    @using (var form = Html.BeginForm())
+    {
+        <div class="col-12">
+            <input type="text" name="UserName" placeholder="UserName" class="col-5" />
+
+        </div>
+        <div class="col-12">
+            <input type="password" name="Password" placeholder="Password" class="col-5" />
+        </div>
+        <input type="submit" name="Login"/>
+    }
+}
+else
+{
+    <p>You are already logged in!</p>
+}
+
+
+@*@using Microsoft.AspNetCore.Http
+
+    @if (Context.Session.GetString("LoggedIn") == null)
+    {
+    <form asp-controller="Home" asp-action="UserLogin" method="post">
+        <p>Please enter your login information</p>
+        <input type="text" name="UserName" placeholder="Username" />
+        <input type="password" name="Password" placeholder="Password" />
+
+    </form>
+    }
+    else
+    {
+    <p> Logged In!</p>
+    }*@

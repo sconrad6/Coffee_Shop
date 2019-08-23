@@ -65,5 +65,29 @@ namespace Coffee_Shop.Controllers
             }
             return View(users);
         }
+        public IActionResult UserLogin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult UserLogin(string name, string password)
+        {
+            string userJson = HttpContext.Session.GetString("UserSession");
+            
+            users = JsonConvert.DeserializeObject<List<RegisterUser>>(userJson);
+            
+            foreach (var user in users)
+            {
+                if (user.Password == password && user.UserName == name)
+                {
+                    HttpContext.Session.SetString("LoggedIn", JsonConvert.SerializeObject(user));
+                    return RedirectToAction("UserWelcome", user);
+                }
+
+            }
+            
+            return View();
+        }
     }
 }
